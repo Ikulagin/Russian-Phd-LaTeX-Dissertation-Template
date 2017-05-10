@@ -1,0 +1,45 @@
+\algblockdefx[at]{At}{EndAt}
+ [1]{\textbf{at} #1 \textbf{do}}
+ {\textbf{done}}
+ 
+\algblockdefx[foreach]{ForEach}{EndForEach}
+ [2]{\textbf{foreach} #1 \textbf{in} #2 \textbf{do}}
+ {\textbf{done}}
+
+\algblockdefx[for]{For}{EndFor}
+ [2]{\textbf{for} #1 \textbf{in} #2 \textbf{do}}
+ {\textbf{done}}
+
+\algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicinputcont{\hspace{3.8 em}}
+\algnewcommand\InputCont{\item[\algorithmicinputcont]}
+
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicoutputcont{\hspace{3.7 em}}
+\algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
+
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\begin{algorithmic}[1]
+  \Input $a[0:d - 1]$ -- Массив в памяти локального ВУ.
+  \InputCont $tmpArray[0:d-1]$ -- Массив в памяти удаленных ВУ, 
+  \InputCont xранящий элементы массива $a$.
+  \LineComment Начало пролога цикла
+  \For {$i$}{$0..d - 1$}
+    \label{pc:r_iterations_loop_array_preload:prologue_begin}
+    \State $tmpArray[i] \gets a[i]$
+  \EndFor
+  \LineComment Копирование массива $tmpArray$ в память множества ВУ $M$
+  \State \Call {broadcast}{$tmpArray$, $M$}
+  \label{pc:r_iterations_loop_array_preload:prologue_end}
+  \LineComment Конец пролога цикла
+  \For {$i$}{$0..r$}
+    \LineComment Передача потока управления множеству $M$ ВУ
+    \At {$M$}
+      \State $tmp \gets \Call {fpreloaded}{tmpArray}$
+      \label{pc:r_iterations_loop_array_preload:replace_acces}
+    \EndAt
+  \EndFor
+ \end{algorithmic}

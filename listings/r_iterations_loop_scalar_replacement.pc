@@ -1,0 +1,47 @@
+\algblockdefx[at]{At}{EndAt}
+ [1]{\textbf{at} #1 \textbf{do}}
+ {\textbf{done}}
+ 
+\algblockdefx[foreach]{ForEach}{EndForEach}
+ [2]{\textbf{foreach} #1 \textbf{in} #2 \textbf{do}}
+ {\textbf{done}}
+
+\algblockdefx[for]{For}{EndFor}
+ [2]{\textbf{for} #1 \textbf{in} #2 \textbf{do}}
+ {\textbf{done}}
+
+\algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicinputcont{\hspace{3.8 em}}
+\algnewcommand\InputCont{\item[\algorithmicinputcont]}
+
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicoutputcont{\hspace{3.7 em}}
+\algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
+
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\begin{algorithmic}[1]
+  \Input $a[0:d - 1]$ -- Массив в памяти локального ВУ.
+  \InputCont $tmpScalars[0:|A|-1]$ -- Массив временных скаляров.
+  \For {$i$}{$0..r$}
+    \LineComment Копирование используемых элементов массива $a$ 
+    \LineComment во временные скаляры для передачи их множеству $M$ ВУ
+    \State $l \gets 0$
+    \ForEach {$k$}{$A$}
+      \State $tmpScalars[l] \gets a[k]$
+      \label{pc:r_iterations_loop_scalar_replacement:copy_to_tmpScalars}
+      \State $l \gets l + 1$
+    \EndForEach
+    \LineComment Копирование временных скаляров $tmpScalars$
+    \LineComment в память множества ВУ $M$
+    \State \Call {broadcast}{$tmpScalars$, $M$}
+    \label{pc:r_iterations_loop_scalar_replacement:bcast}
+    \LineComment Передача потока управления множеству $M$ ВУ
+    \At {$M$}
+      \State $tmp \gets \Call {fscalar}{tmpScalars}$
+      \label{pc:r_iterations_loop_scalar_replacement:replace_acces}
+    \EndAt
+  \EndFor
+ \end{algorithmic}

@@ -1,0 +1,37 @@
+Входные данные:  Node – фрагмент АСД соответствующий
+                        началу конструкции at
+                 NodeLoop – фрагмент АСД соответствующий началу цикла     
+Выходные данные: Node – модифицированный фрагмент АСД конструкции at
+1  function ProcessAtStmt(Node, NodeLoop)
+   // Перебор всех инструкции конструкции at
+2  for each S in GetStatements(Node) do 
+       // Обработка локальных объявлений
+3      if NodeType(S) = LocalDeclaration then
+           // Получение выражения инициализации
+4          I = GetInitialization(S)
+           // Поиск обращения к элементам Array-массива
+           // независимого от итерации к итерации
+5          if NodeType(I) = Call &&
+6             typeof(GetTypeOfTarget(I)) = Array &&
+7             IsReadOnlyArray(GetCallVarName(I)) then
+               // Позиция цикла в исходном коде
+8              pos = GetSrcPosition(NodeLoop) 
+9              args = GetCallArguments(I)
+               // Генерация имени локальной копии массива
+10             localName = GenerateNewName()
+               // Создание кода пролога цикла
+11             loopProlog = CreateDistrebutedArray(localName,
+12                                                 GetCallVarName(I))
+               // Определение номера ВУ на котором выполняется код
+13             localPlace = CreateLocalPlace()
+               // Создание кода обращения к локальному массиву
+14             newCall = CreateLocalCall(localName, localPlace, args)
+               // Замена обращения к удаленному массиву
+               // обращением к локальной копии
+15             ReplaceNewCall(I, newCall)
+               // Добавление пролога цикла
+16             InsertStatementsToPos(loopProlog, pos)
+17         end if
+18     end if
+19 end for
+20 end function

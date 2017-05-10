@@ -1,0 +1,11 @@
+Входные данные:  Node – фрагмент АСД соответствующий началу цикла
+Выходные данные: Node – модифицированный фрагмент АСД цикла      
+1 function ProcessLoop(Node)
+2 // Проход по всем инструкциям цикла
+3 for each S in GetStatements(Node) do 
+4     // Поиск конструкции передачи управления другому ВУ
+5     if NodeType(S) = AtStmt then
+6         ProcessAtStmt(S, Node)
+7     end if
+8 end for
+9 end function

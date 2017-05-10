@@ -1,0 +1,13 @@
+Входные данные:  Root – указатель на корень АСД
+                 параллельной PGAS-программы
+Выходные данные: Root – указатель на корень АСД
+                 модифицированной PGAS-программы 
+1 function Visit(Root)
+2 for each v in GetChildren(Root) do // Перебор всех дочерних узлов
+3     Visit(v)                       // Рекурсивно посещаем вершину v
+4 end for
+
+5 if NodeType(Root) = Loop then
+6   ProcessLoop(Root)
+7 end if
+8 end function
