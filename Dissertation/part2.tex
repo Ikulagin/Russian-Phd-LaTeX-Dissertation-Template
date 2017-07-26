@@ -468,21 +468,21 @@ Xeon E5420 соединённых сетью InfiniBand QDR) Центра пар
 тесте оба алгоритма демонстрируют ускорение от 5 до 82 раз. 
 
 \begin{figure}[ht]
-    {\centering
-        \hfill
-        \subcaptionbox[]{Алгоритм 
-\textit{ArrayPreload}\label{results:arraypreload_jet}} 
-{\includegraphics[width=0.5\linewidth]{results_arraypreload_jet}}%
-        \hfill       
-        \subcaptionbox{Алгоритм \textit{Scalar 
-Replacement}\label{results:scalar_replacement_jet}} 
-{\includegraphics[width=0.5\linewidth]{results_scalar_replacement_jet}}
-        \hfill
-    }
+\centering {
+  \begin{minipage}[ht]{0.49\linewidth}\centering 
+    \includegraphics[width=1\linewidth]{results_arraypreload_jet} \\ Алгоритм 
+    \textit{ArrayPreload}\label{results:arraypreload_jet}
+  \end{minipage}
+  \hfill       
+  \begin{minipage}[ht]{0.49\linewidth}\centering  
+    \includegraphics[width=1\linewidth]{results_scalar_replacement_jet} \\ Алгоритм
+    \textit{Scalar Replacement}\label{results:scalar_replacement_jet}
+  \end{minipage}
 1 -- $D$ = 40000, $R$ = 40000; 2 -- $D$ = 40000, $R$ = 4000;\\
 3 -- $D$ = 40000, $R$ = 400;   4 -- $D$ = 40000, $R$ = 40;
     \caption{Ускорение тестовой программы (кластер Jet)}
     \label{results:arraypreload_scalarreplacement_jet}
+}
 \end{figure}
 
 \begin{figure}[ht] 
