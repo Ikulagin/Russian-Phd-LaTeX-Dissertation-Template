@@ -1,0 +1,29 @@
+\algblockdefx[for]{For}{EndFor}
+ [2]{\textbf{for} #1 \textbf{in} #2 \textbf{do}}
+ {\textbf{done}}
+
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicinputcont{\hspace{3.8 em}}
+\algnewcommand\InputCont{\item[\algorithmicinputcont]}
+
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicoutputcont{\hspace{3.7 em}}
+\algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
+
+\begin{algorithmic}[1]
+\Input $n$ -- Количество ЭМ
+\Function {MasterWorkload}{$n$}
+  \For {$i$}{$1..(n-1)$}
+    \State \Call {Send}{$i$, $InitMsg$}
+  \EndFor
+  \State \Call{ExecuteUserProgram}{\null}
+  \Comment Выполнение пользовательского кода
+  \For {$i$}{$1..(n-1)$}
+    \State \Call {Send}{$i$, $FinalizeMsg$}
+  \EndFor
+\EndFunction
+\end{algorithmic}

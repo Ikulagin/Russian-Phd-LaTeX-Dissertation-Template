@@ -1,0 +1,18 @@
+public static def main (Rail[String]) {
+    val a = new DistArray_Block_2[Int](N, N);
+    val b = new Array[Int](N);
+    val c = new Array[Int](N);
+    val c_ref = GlobalRef(c);
+
+    for (i in 0..(N-1)) {
+        at (a.place(i,0)) async {
+            var sum:Int = 0;
+            for (j in 0..(N-1)) {
+                sum += a(i,j)*b(j);
+            }
+            at (c_ref) {
+               c_ref()(i) += sum;
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+public static def main (Rail[String]) {
+  val a = [1,2,3];
+  val world = Place.places();
+
+  at(world.next(here)) {
+      ComputeSum(a);
+  }
+}

@@ -1,0 +1,12 @@
+shared int a[N][N];
+shared int b[N],
+           c[N];
+...
+void main (void) {
+    int i, j;
+    upc_forall( i = 0 ; i < N; i++; i) {
+        c[i] = 0;
+        for ( j= 0 ; j < N; j++)
+            c[i] += a[i][j]*b[j];
+    }
+}
