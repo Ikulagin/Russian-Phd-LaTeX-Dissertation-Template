@@ -1,0 +1,31 @@
+\algblockdefx[for]{For}{EndFor}
+ [2]{\textbf{for} #1 \textbf{in} #2 \textbf{do}}
+ {\textbf{done}}
+
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicinputcont{\hspace{3.8 em}}
+\algnewcommand\InputCont{\item[\algorithmicinputcont]}
+
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicoutputcont{\hspace{3.7 em}}
+\algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
+
+\begin{algorithmic}[1]
+\Input $C$ -- АСД конструкции циклической 
+\InputCont передачи потока управления подчиненным ЭМ;
+\Output $C^{\prime}$ -- модифицированное АСД конструкции циклической
+\OutputCont передачи потока управления подчиненным ЭМ;
+\OutputCont $P$ -- АСД функции $BodyAt$, представляющей тело конструкции $at$;
+\Function {DefaultTransformation}{$C, C^{\prime}, P$}
+  \State $B \gets \Call{LookupInnerLoopBody}{C}$
+  \State $r \gets \Call{LookupIdRemoteNode}{C}$
+  \State $\{a_{0},...,a_{l-1}\} \gets \Call{LookupArrays}{B}$
+  \State $\{f_{0},...,f_{l-1}\} \gets \Call{LookupOperators}{B, \{a_{0},...,a_{l-1}\}}$
+  \State $P \gets \Call{BuildTreeBodyAt}{\{f_{0},...,f_{l-1}\}, \{a_{0},...,a_{l-1}\}, B}$
+  \State $B^{\prime} \gets \Call{BuildASTSendMsg}{B, \{f_{0},...,f_{l-1}\}, \{a_{0},...,a_{l-1}\}, P, r}$
+\EndFunction
+\end{algorithmic}

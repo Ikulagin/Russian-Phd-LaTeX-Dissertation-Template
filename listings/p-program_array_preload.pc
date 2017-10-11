@@ -1,0 +1,50 @@
+\algblockdefx[for]{For}{EndFor}
+ [2]{\textbf{for} #1 \textbf{in} #2 \textbf{do}}
+ {\textbf{done}}
+
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicinputcont{\hspace{3.8 em}}
+\algnewcommand\InputCont{\item[\algorithmicinputcont]}
+
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicoutputcont{\hspace{3.7 em}}
+\algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
+
+\begin{algorithmic}[1]
+\Function {PrologueBody}{$\{a_{0},...,a_{l-1}\}$}
+	\State \Call {CreateLocalCopy}{$a^{\prime}_{0}$, $a_{0}$}
+	\State ...
+	\State \Call {CreateLocalCopy}{$a^{\prime}_{l-1}$, $a_{l-1}$}
+\EndFunction
+\Function {BodyAt}{\null}
+	\State $f_{0}(a^{\prime}_{0})$
+	\State ...
+	\State $f_{l-1}(a^{\prime}_{l-1})$
+\EndFunction
+\State ...
+\Function {Main}{\null}
+	\State ...
+	\LineComment Циклическая конструкция P-программы в модели передачи сообщений
+	\LineComment Пролог цикла
+	\For {$j$}{$M$}
+		\State $msg.type \gets UserCodeMsg$
+		\State $msg.data \gets \Call{Serialize}{\{a_{0},...,a_{l-1}\}}$
+		\State $msg.code \gets \Call{Serialize}{PrologueBody}$
+		\State \Call {Send}{$j$, $msg$}
+		\EndFor
+	\For {$i$}{$\{0,..,r - 1\}$}
+		\For {$j$}{$M$}
+			\State $msg.type \gets UserCodeMsg$
+			\State $msg.data \gets \null$
+			\State $msg.code \gets \Call{Serialize}{BodyAt}$
+			\State \Call {Send}{$j$, $msg$}
+		\EndFor
+	\EndFor
+	\LineComment Конец конструкции
+	\State ...
+\EndFunction
+\end{algorithmic}

@@ -3,8 +3,6 @@
  {\textbf{done}}
 
 \algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
-\algnewcommand\Continue{\State \textbf{continue}}
-
 
 \algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
 \algnewcommand\Input{\item[\algorithmicinput]}
@@ -17,22 +15,24 @@
 \algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
 
 \begin{algorithmic}[1]
-\Input $n$ -- Количество ЭМ
-\Function {SlaveWorkload}{$n$}
-  \While{true}
-    \State $msg \gets \Call{QueueGetMsg}{q}$
-    \If{$msg.type == InitMsg$}
-      \State $\Call{Initialize}{n}$
-      \Continue
-    \EndIf
-    \If{$msg.type == UserCodeMsg$}
-      \State $\Call{ExecuteMsgCode}{msg}$
-      \Continue
-    \EndIf
-    \If{$msg.type == FinalizeMsg$}
-      \State $\Call{Finalize}{n}$
-      \State $\Call{Exit}{\null}$
-    \EndIf
-  \EndWhile
+\Function {BodyAt}{$(a_{0},...,a_{l-1})$}
+	\State $f_{0}(a_{0})$
+	\State ...
+	\State $f_{l-1}(a_{l-1})$
+\EndFunction
+\State ...
+\Function {Main}{\null}
+	\State ...
+	\LineComment Циклическая конструкция P-программы в модели передачи сообщений
+	\For {$i$}{$\{0,..,r - 1\}$}
+		\For {$j$}{$M$}
+			\State $msg.type \gets UserCodeMsg$
+			\State $msg.data \gets \Call{Serialize}{(a_{0},...,a_{l-1})}$
+			\State $msg.code \gets \Call{Serialize}{BodyAt}$
+			\State \Call {Send}{$j$, $msg$}
+		\EndFor
+	\EndFor
+	\LineComment Конец конструкции
+	\State ...
 \EndFunction
 \end{algorithmic}

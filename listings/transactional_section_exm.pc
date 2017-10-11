@@ -1,0 +1,15 @@
+/* Совместно используемая хеш-таблица */
+hashtable_t *h;
+/* Код потоков */
+void *thread_start(void *arg) {
+    struct data *d = (struct data *)arg;
+    prepareData(d);
+    /* Транзакционная секция */
+    __transaction_atomic {
+        /* Добавление элемента в хеш-таблицу */
+        struct data *d = (struct data *)arg;
+        hashtable_insert(h, d);
+    }
+    saveData(d);
+    return NULL;
+}

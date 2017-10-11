@@ -1,0 +1,36 @@
+\algblockdefx[for]{For}{EndFor}
+ [2]{\textbf{for} #1 \textbf{in} #2 \textbf{do}}
+ {\textbf{done}}
+
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicinputcont{\hspace{3.8 em}}
+\algnewcommand\InputCont{\item[\algorithmicinputcont]}
+
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicoutputcont{\hspace{3.7 em}}
+\algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
+
+\begin{algorithmic}[1]
+\Input $C$ -- АСД конструкции циклической 
+\InputCont передачи потока управления подчиненным ЭМ;
+\Output $C^{\prime}$ -- модифицированное АСД конструкции циклической
+\OutputCont передачи потока управления подчиненным ЭМ;
+\OutputCont $P$ -- АСД функции $BodyAt$, представляющей тело конструкции $at$;
+\OutputCont $H$ -- АСД функции $PrologueBody$ создания локальных копий 
+\OutputCont используемых массивов;
+\Function {ArrayPreloadTransformation}{$C, C^{\prime}, P$}
+  \State $B \gets \Call{LookupInnerLoopBody}{C}$
+  \State $r \gets \Call{LookupIdRemoteNode}{C}$
+  \State $\{a_{0},...,a_{l-1}\} \gets \Call{LookupArrays}{B}$
+  \State $\{f_{0},...,f_{l-1}\} \gets \Call{LookupOperators}{B, \{a_{0},...,a_{l-1}\}}$
+  \State $H \gets \Call{BuildPrologueBody}{\{a_{0},...,a_{l-1}\}}$
+  \State $\{a^{\prime}_{0},...,a^{\prime}_{l-1}\} \gets \Call{GetLocalArrays}{H}$
+  \State $S \gets \Call{BuildLoopPrologue}{\{a_{0},...,a_{l-1}\},H}$
+  \State $P \gets \Call{BuildTreeBodyAt}{\{f_{0},...,f_{l-1}\}, \{a^{\prime}_{0},...,a^{\prime}_{l-1}\}}$
+  \State $B^{\prime} \gets \Call{BuildASTSendMsg}{B, \{f_{0},...,f_{l-1}\}, NULL, P, r}$
+\EndFunction
+\end{algorithmic}

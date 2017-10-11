@@ -15,17 +15,24 @@
 \algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
 
 \begin{algorithmic}[1]
-\Input $n$ -- Количество ЭМ
-\Function {MasterWorkload}{$n$}
-  \State $msg.type \gets InitMsg$
-  \For {$i$}{$1..(n-1)$}
-    \State \Call {Send}{$i$, $msg$}
-  \EndFor
-  \State \Call{ExecuteUserProgram}{\null}
-  \Comment Выполнение пользовательского кода
-  \State $msg.type \gets FinalizeMsg$
-  \For {$i$}{$1..(n-1)$}
-    \State \Call {Send}{$i$, $msg$}
-  \EndFor
+\Function {BodyAt}{$T$}
+	\State $g_{0}(t_{0})$
+	\State ...
+	\State $g_{q-1}(t_{q-1})$
+\EndFunction
+\State ...
+\Function {Main}{\null}
+	\State ...
+	\LineComment Циклическая конструкция P-программы в модели передачи сообщений
+	\For {$i$}{$\{0,..,r - 1\}$}
+		\For {$j$}{$M$}
+			\State $msg.type \gets UserCodeMsg$
+			\State $msg.data \gets \Call{Serialize}{T}$
+			\State $msg.code \gets \Call{Serialize}{BodyAt}$
+			\State \Call {Send}{$j$, $msg$}
+		\EndFor
+	\EndFor
+	\LineComment Конец конструкции
+	\State ...
 \EndFunction
 \end{algorithmic}
