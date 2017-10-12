@@ -1,0 +1,16 @@
+/*Трансформированная транзакционная секция*/
+     ...
+     state = _ITM_beginTransaction()
+<L1>:
+     if (state & a_abortTransaction)
+         goto <L3>;
+     else
+         goto <L2>;
+<L2>:
+     if (_ITM_LU4(&a) == 0)
+         _ITM_WU4(&b, 1);
+     else
+         _ITM_WU4(&a, 0);
+     _ITM_commitTransaction();
+<L3>:
+     ...

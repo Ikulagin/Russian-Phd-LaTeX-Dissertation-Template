@@ -1,0 +1,22 @@
+/*Трансформированная транзакционная секция*/
+     ...                                    
+     state = _ITM_beginTransaction()
+     tm_prof_begin(state);
+<L1>:                                       
+     if (state & a_abortTransaction)        
+         goto <L3>;                         
+     else                                   
+         goto <L2>;                         
+<L2>:                     
+     tm_prof_operation(sizeof(a));                  
+     if (_ITM_LU4(&a) == 0) {                 
+         tm_prof_operation(sizeof(b));
+         _ITM_WU4(&b, 1);                   
+     } else {
+         tm_prof_operation(sizeof(a));
+         _ITM_WU4(&a, 0);
+     }
+     _ITM_commitTransaction();
+     tm_prof_commit();
+<L3>:                                       
+     ...
