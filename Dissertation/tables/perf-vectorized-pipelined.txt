@@ -1,0 +1,53 @@
+\centering \textbf{TSC} &
+\centering \textbf{Core Cyc.} &
+\centering \textbf{Ref. Cyc.} &
+\centering \textbf{Instruct.} &
+\centering \textbf{Uops} &
+\centering \textbf{Uop p0} &
+\centering \textbf{Uop p1} &
+\centering \textbf{Uop p4} & \\
+\hline
+\centering 77192  &   
+\centering 98012  &   
+\centering 77220  &   
+\centering 225009 &   
+\centering 225061 &   
+\centering 25452  &   
+\centering 29478  &   
+\centering 25009  & \\
+\hline
+\centering 77194  &   
+\centering 98014  &   
+\centering 77220  &   
+\centering 225009 &   
+\centering 225061 &   
+\centering 25330  &   
+\centering 28895  &   
+\centering 25006  & \\
+\hline
+\centering 77194  &   
+\centering 98015  &   
+\centering 77246  &   
+\centering 225009 &   
+\centering 225061 &   
+\centering 25346  &   
+\centering 29046  &   
+\centering 25008  & \\
+\hline
+\centering 77197  &   
+\centering 98014  &   
+\centering 77220  &   
+\centering 225009 &   
+\centering 225061 &   
+\centering 25221  &   
+\centering 28405  &   
+\centering 25006  & \\
+\hline
+\centering 77200  &   
+\centering 98018  &   
+\centering 77246  &   
+\centering 225009 &   
+\centering 225061 &   
+\centering 25256  &   
+\centering 28364  &   
+\centering 25009  & \\

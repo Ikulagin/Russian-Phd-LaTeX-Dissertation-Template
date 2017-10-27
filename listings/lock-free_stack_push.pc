@@ -1,0 +1,23 @@
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicinputcont{\hspace{3.8 em}}
+\algnewcommand\InputCont{\item[\algorithmicinputcont]}
+
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicoutputcont{\hspace{3.7 em}}
+\algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
+
+\algdef{SE}[DOWHILE]{Do}{DoWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+
+\begin{algorithmic}[1]
+\Function {push}{$S, x$}
+    \State $node \gets \Call{LinkedListCreateNode}{x}$
+    \Do
+        \State $head \gets S.head$
+        \State $node.next \gets head$
+    \DoWhile{$\Call{CAS}{S.head, head, node} \not= true$}
+\EndFunction
+\end{algorithmic}

@@ -25,12 +25,12 @@
 \Function {ArrayPreloadTransformation}{$C, C^{\prime}, P$}
   \State $B \gets \Call{LookupInnerLoopBody}{C}$
   \State $r \gets \Call{LookupIdRemoteNode}{C}$
-  \State $\{a_{0},...,a_{l-1}\} \gets \Call{LookupArrays}{B}$
-  \State $\{f_{0},...,f_{l-1}\} \gets \Call{LookupOperators}{B, \{a_{0},...,a_{l-1}\}}$
-  \State $H \gets \Call{BuildPrologueBody}{\{a_{0},...,a_{l-1}\}}$
-  \State $\{a^{\prime}_{0},...,a^{\prime}_{l-1}\} \gets \Call{GetLocalArrays}{H}$
-  \State $S \gets \Call{BuildLoopPrologue}{\{a_{0},...,a_{l-1}\},H}$
-  \State $P \gets \Call{BuildTreeBodyAt}{\{f_{0},...,f_{l-1}\}, \{a^{\prime}_{0},...,a^{\prime}_{l-1}\}}$
-  \State $B^{\prime} \gets \Call{BuildASTSendMsg}{B, \{f_{0},...,f_{l-1}\}, NULL, P, r}$
+  \State $(a_{0},...,a_{l-1}) \gets \Call{LookupArrays}{B}$
+  \State $(f_{0},...,f_{l-1}) \gets \Call{LookupOperators}{B, (a_{0},...,a_{l-1})}$
+  \State $H \gets \Call{BuildPrologueBody}{(a_{0},...,a_{l-1})}$
+  \State $(a^{\prime}_{0},...,a^{\prime}_{l-1}) \gets \Call{GetLocalArrays}{H}$
+  \State $S \gets \Call{BuildLoopPrologue}{(a_{0},...,a_{l-1}),H}$
+  \State $P \gets \Call{BuildTreeBodyAt}{(f_{0},...,f_{l-1}), (a^{\prime}_{0},...,a^{\prime}_{l-1})}$
+  \State $B^{\prime} \gets \Call{BuildASTSendMsg}{B, (f_{0},...,f_{l-1}), NULL, P, r}$
 \EndFunction
 \end{algorithmic}

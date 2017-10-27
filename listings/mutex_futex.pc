@@ -1,0 +1,27 @@
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicinputcont{\hspace{3.8 em}}
+\algnewcommand\InputCont{\item[\algorithmicinputcont]}
+
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicoutputcont{\hspace{3.7 em}}
+\algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
+
+\begin{algorithmic}[1]
+\Function {lock}{$m$}
+    \State $expected \gets 0$
+    \While{$\Call {CAS}{m, expected, 1} \not= true$}
+        \State $expected \gets 0$
+        \State \Call{futex\_wait}{$m, expected$}
+    \EndWhile
+\EndFunction
+
+\Function {unlock}{$m$}
+    \State $m \gets 0$
+    \State \Call{futex\_wake}{$m, 1$}
+\EndFunction
+
+\end{algorithmic}

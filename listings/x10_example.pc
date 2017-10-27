@@ -1,12 +1,17 @@
 public static def main (Rail[String]) {
-    val a = new DistArray_Block_2[Int](N, N); // Распределенный массив
-    val b = new Array[Int](N); // Локальный массив
+    // Распределенный массив
+    val a = new DistArray_Block_2[Int](N, N);
+    // Локальный массив
+    val b = new Array[Int](N); 
     val c = new Array[Int](N);
-    val c_ref = GlobalRef(c); // Глобальная ссылка на массив <<c>>
+    // Глобальная ссылка на массив <<c>>
+    val c_ref = GlobalRef(c);
 
     for (i in 0..(N-1)) {
-        at (a.place(i,0)) async { // Передача управления подчиненной ЭМ
-            var sum:Int = 0;      // и запуск на ней нового потока <<async>>
+    /* Передача управления подчиненной ЭМ
+       и запуск на ней нового потока <<async>> */
+        at (a.place(i,0)) async {
+            var sum:Int = 0;
             for (j in 0..(N-1)) {
                 sum += a(i,j)*b(j);
             }

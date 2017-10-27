@@ -320,12 +320,65 @@
     firstnumber=1,
     numberfirstline=true,
 	breaklines=true,
-    language=C,
+	language={[ISO]C++},
     keywordstyle=\color{blue}\bfseries,
-    commentstyle=\itshape\color{green},
     identifierstyle=\color{black},
     stringstyle=\color{orange},
+    morekeywords={__m128, _mm_add_ps, _mm_mul_ps, _mm_set1_ps},
     classoffset=1,
     morekeywords={__transaction_atomic},keywordstyle=\color{red},
 }
 
+\lstdefinestyle{upc}{
+	mathescape,
+    stepnumber = 1,
+    firstnumber=1,
+    numberfirstline=true,
+	breaklines=true,
+	language={[ISO]C++},
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\color{black},
+    stringstyle=\color{orange},
+    morekeywords={shared, upc_forall},
+}
+
+\lstdefinestyle{x10}{
+	mathescape,
+    stepnumber = 1,
+    firstnumber=1,
+    numberfirstline=true,
+	breaklines=true,
+	language={Java},
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\color{black},
+    stringstyle=\color{orange},
+    morekeywords={def, val, var, in, at, async, Send, String, Int, Long},
+%    classoffset=1,
+%    morekeywords={__transaction_atomic},keywordstyle=\color{red},
+}
+
+\lstdefinelanguage [x64]{Assembler} [x86masm]{Assembler}
+{
+	keywords={movaps, mulps, addps, movss, mulss, addss, addq, add, cmp, cmpq, jg, jne},
+%                  rax,rdx,rcx,rbx,rsi,rdi,rsp,rbp, %
+%                  r8,r8d,r8w,r8b,r9,r9d,r9w,r9b, %
+%                  r10,r10d,r10w,r10b,r11,r11d,r11w,r11b, %
+%                  r12,r12d,r12w,r12b,r13,r13d,r13w,r13b, %
+%                  r14,r14d,r14w,r14b,r15,r15d,r15w,r15b}, % etc.
+   morecomment=[s]{/*}{*/},
+}
+
+\lstdefinestyle{custom_asm}{
+    stepnumber = 1,
+    firstnumber=1,
+    numberfirstline=true,
+	breaklines=true,
+	language={[x64]Assembler},
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\color{black},
+    stringstyle=\color{orange},
+}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

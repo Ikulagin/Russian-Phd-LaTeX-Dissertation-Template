@@ -1,0 +1,84 @@
+\centering \textbf{Версия DGEMM} &
+\centering \textbf{Уско-\\рение} &
+\centering \textbf{L1d-\\load-\\misses} &
+\centering \textbf{LLC-\\load-\\misses} &
+\centering \textbf{mem-\\loads} &
+\centering \textbf{mem-\\stores} &
+\centering \textbf{cycles} &
+\centering \textbf{instruс-\\tions} &
+\centering \textbf{CPI} &
+\centering \textbf{branch-\\instruс-\\tions} &
+\centering \textbf{branch-\\misses} &
+\\ \hline
+\centering $<i, j, k>$: 1 (Рисунок~\ref{graph:graph_broadwell_1})  &
+\centering 8.79  &
+\centering 2115816  &
+\centering 0 &
+\centering 5308466 &
+\centering 16396 &
+\centering 9850108 &
+\centering 14059112 &
+\centering 0.7 &
+\centering 1065249 &
+\centering 267 &
+\\ \hline
+\centering $<i, j, k>$: 2 (Рисунок~\ref{graph:graph_broadwell_1}) &
+\centering 6.46 &
+\centering 2143096 &
+\centering 0 &
+\centering 6324281 &
+\centering 16396 &
+\centering 13456733 &
+\centering 12682856 &
+\centering 1.06 &
+\centering 532769 &
+\centering 275 &
+\\ \hline
+\centering $<i, j, k>$: 3 (Рисунок~\ref{graph:graph_broadwell_1}) &
+\centering 3.38 &
+\centering 4263691 &
+\centering 3456 &
+\centering 12615758 &
+\centering 32780 &
+\centering 25802907 &
+\centering 37914476 &
+\centering 0.68 &
+\centering 4210981 &
+\centering 16901 &
+\\ \hline
+\centering $<i, k, j>$: 4 (Рисунок~\ref{graph:graph_broadwell_2})&
+\centering 8.36 &
+\centering 2118641 &
+\centering 0 &
+\centering 5308466 &
+\centering 1048588 &
+\centering 10355924 &
+\centering 13780585 &
+\centering 0.75 &
+\centering 1065249 &
+\centering 270 &
+\\ \hline
+\centering $<i, k, j>$: 5 (Рисунок~\ref{graph:graph_broadwell_2})&
+\centering 6.77 &
+\centering 2098595 &
+\centering 1826 &
+\centering 8454194 &
+\centering 4194316 &
+\centering 12790121 &
+\centering 33949289 &
+\centering 0.38 &
+\centering 4260129 &
+\centering 520 &
+\\ \hline
+\centering $<i, k, j>$: 6 (Рисунок~\ref{graph:graph_broadwell_2})&
+\centering 2.72 &
+\centering 2178667 &
+\centering 185 &
+\centering 20987997 &
+\centering 4194317 &
+\centering 32114941 &
+\centering 74548847 &
+\centering 0.43 &
+\centering 5259559 &
+\centering 16657 &
+\\ \hline

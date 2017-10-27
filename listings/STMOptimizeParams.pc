@@ -1,0 +1,31 @@
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
+
+\algnewcommand\algorithmicinput{\textbf{Input:\hspace{0.7 em}}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicinputcont{\hspace{3.8 em}}
+\algnewcommand\InputCont{\item[\algorithmicinputcont]}
+
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicoutputcont{\hspace{3.7 em}}
+\algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
+
+\begin{algorithmic}[1]
+\Function {STMOptimizeParams}{$T, B, S$}
+    \State $W \gets \Call{ProcessTrace}{T}$
+    \If{$W == 1$}
+        \State $B \gets 2^{4}$
+        \State $S \gets 2^{18}$
+    \ElsIf{$W == 4$}
+        \State $B \gets 2^{6}$
+        \State $S \gets 2^{19}$
+    \ElsIf{$W == 8$}
+        \State $B \gets 2^{7}$
+        \State $S \gets 2^{20}$
+    \ElsIf{$W == 64$}
+        \State $B \gets 2^{8}$
+        \State $S \gets 2^{21}$
+    \EndIf
+    \State \Call{CompileProgram}{$S, B$}
+\EndFunction
+\end{algorithmic}

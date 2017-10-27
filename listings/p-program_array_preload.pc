@@ -15,7 +15,7 @@
 \algnewcommand\OutputCont{\item[\algorithmicoutputcont]}
 
 \begin{algorithmic}[1]
-\Function {PrologueBody}{$\{a_{0},...,a_{l-1}\}$}
+\Function {PrologueBody}{$(a_{0},...,a_{l-1})$}
 	\State \Call {CreateLocalCopy}{$a^{\prime}_{0}$, $a_{0}$}
 	\State ...
 	\State \Call {CreateLocalCopy}{$a^{\prime}_{l-1}$, $a_{l-1}$}
@@ -32,7 +32,7 @@
 	\LineComment Пролог цикла
 	\For {$j$}{$M$}
 		\State $msg.type \gets UserCodeMsg$
-		\State $msg.data \gets \Call{Serialize}{\{a_{0},...,a_{l-1}\}}$
+		\State $msg.data \gets \Call{Serialize}{(a_{0},...,a_{l-1})}$
 		\State $msg.code \gets \Call{Serialize}{PrologueBody}$
 		\State \Call {Send}{$j$, $msg$}
 		\EndFor

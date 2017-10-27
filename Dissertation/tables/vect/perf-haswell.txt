@@ -1,0 +1,84 @@
+\centering \textbf{Версия DGEMM} &
+\centering \textbf{Уско-\\рение} &
+\centering \textbf{L1d-\\load-\\misses} &
+\centering \textbf{LLC-\\load-\\misses} &
+\centering \textbf{mem-\\loads} &
+\centering \textbf{mem-\\stores} &
+\centering \textbf{cycles} &
+\centering \textbf{instruс-\\tions} &
+\centering \textbf{CPI} &
+\centering \textbf{branch-\\instruс-\\tions} &
+\centering \textbf{branch-\\misses} &
+\\ \hline
+\centering $<i, j, k>$: 1 (Рисунок~\ref{graph:graph_haswell_1}) &
+\centering 4.67 &
+\centering 8684 &
+\centering 0 &
+\centering 86038 &
+\centering 1034 &
+\centering 93663 &
+\centering 240100 &
+\centering 0.39 &
+\centering 17501 &
+\centering 72 &
+\\ \hline
+\centering $<i, j, k>$: 2 (Рисунок~\ref{graph:graph_haswell_1}) &
+\centering 4.57 &
+\centering 9884 &
+\centering 0 &
+\centering 100368 &
+\centering 1034 &
+\centering 97662 &
+\centering 203236 &
+\centering 0.48 &
+\centering 8797 &
+\centering 71 &
+\\ \hline
+\centering $<i, j, k>$: 3 (Рисунок~\ref{graph:graph_haswell_1}) &
+\centering 3.16 &
+\centering 19336 &
+\centering 0 &
+\centering 198678 &
+\centering 2060 &
+\centering 213945 &
+\centering 600612 &
+\centering 0.36 &
+\centering 66653 &
+\centering 1095 &
+\\ \hline
+\centering $<i, k, j>$: 4 (Рисунок~\ref{graph:graph_haswell_2}) &
+\centering 4.65 &
+\centering 8730 &
+\centering 0 &
+\centering 86038 &
+\centering 16394 &
+\centering 91136 &
+\centering 222693 &
+\centering 0.41 &
+\centering 17501 &
+\centering 72 &
+\\ \hline
+\centering $<i, k, j>$: 5 (Рисунок~\ref{graph:graph_haswell_2}) &
+\centering 3.66 &
+\centering 9643 &
+\centering 0 &
+\centering 135190 &
+\centering 65546 &
+\centering 144023 &
+\centering 549349 &
+\centering 0.26 &
+\centering 69725 &
+\centering 72 &
+\\ \hline
+\centering $<i, k, j>$: 6 (Рисунок~\ref{graph:graph_haswell_2}) &
+\centering 1.83 &
+\centering 9282 &
+\centering 0 &
+\centering 328728 &
+\centering 65547 &
+\centering 483118 &
+\centering 1169893 &
+\centering 0.41 &
+\centering 83037 &
+\centering 78 &
+\\ \hline

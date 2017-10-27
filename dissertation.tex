@@ -2,6 +2,7 @@
 \RequirePackage[l2tabu,orthodox]{nag} % Раскомментировав, можно в логе получать рекомендации относительно правильного использования пакетов и предупреждения об устаревших и нерекомендуемых пакетах
 % Формат А4, 14pt (ГОСТ Р 7.0.11-2011, 5.3.6)
 \documentclass[a4paper,14pt,oneside,openany]{memoir}
+%\documentclass[a4paper,14pt,oneside,openany]{scrreprt}
 
 \input{common/setup}               % общие настройки шаблона
 \input{common/packages}  % Пакеты общие для диссертации и автореферата
@@ -21,9 +22,7 @@
 
 \input{Dissertation/inclusioncontrol}    % Управление компиляцией отдельных частей диссертации
 
-
-
-\usepackage{algorithmicx}
+\usepackage{algorithm}
 \usepackage{algpseudocode}
 
 \begin{document}%
@@ -34,11 +33,10 @@
 \include{Dissertation/title}           % Титульный лист
 \include{Dissertation/contents}        % Оглавление
 % \include{Dissertation/introduction}    % Введение
-% \include{Dissertation/part1}           % Глава 1
-% \include{Dissertation/part2}           % Глава 2 PGAS
-\include{Dissertation/part3}           % Глава 3 SMP/NUMA synchronization
-% \include{Dissertation/part2}           % Глава 2
-% \include{Dissertation/part3}           % Глава 3
+%\include{Dissertation/part1}           % Глава 1
+%\include{Dissertation/part2}           % Глава 2 PGAS
+%\include{Dissertation/part3}           % Глава 3 SMP/NUMA synchronization
+%\include{Dissertation/part4}           % Глава 4 Мультикластерная ВС
 % \include{Dissertation/conclusion}      % Заключение
 % \include{Dissertation/acronyms}        % Список сокращений и условных обозначений
 % \include{Dissertation/dictionary}      % Словарь терминов

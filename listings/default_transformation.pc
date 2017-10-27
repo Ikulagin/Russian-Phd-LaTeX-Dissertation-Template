@@ -23,9 +23,9 @@
 \Function {DefaultTransformation}{$C, C^{\prime}, P$}
   \State $B \gets \Call{LookupInnerLoopBody}{C}$
   \State $r \gets \Call{LookupIdRemoteNode}{C}$
-  \State $\{a_{0},...,a_{l-1}\} \gets \Call{LookupArrays}{B}$
-  \State $\{f_{0},...,f_{l-1}\} \gets \Call{LookupOperators}{B, \{a_{0},...,a_{l-1}\}}$
-  \State $P \gets \Call{BuildTreeBodyAt}{\{f_{0},...,f_{l-1}\}, \{a_{0},...,a_{l-1}\}, B}$
-  \State $B^{\prime} \gets \Call{BuildASTSendMsg}{B, \{f_{0},...,f_{l-1}\}, \{a_{0},...,a_{l-1}\}, P, r}$
+  \State $(a_{0},...,a_{l-1}) \gets \Call{LookupArrays}{B}$
+  \State $(f_{0},...,f_{l-1}) \gets \Call{LookupOperators}{B, (a_{0},...,a_{l-1})}$
+  \State $P \gets \Call{BuildTreeBodyAt}{(f_{0},...,f_{l-1}), (a_{0},...,a_{l-1}), B}$
+  \State $B^{\prime} \gets \Call{BuildASTSendMsg}{B, (f_{0},...,f_{l-1}), (a_{0},...,a_{l-1}), P, r}$
 \EndFunction
 \end{algorithmic}

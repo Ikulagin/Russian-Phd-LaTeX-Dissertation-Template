@@ -26,7 +26,9 @@
   \State $A \gets \Call{LookupAtBody}{B}$
   \State $T \gets \Call{LookupUsedArraysElements}{A}$
   \State $(g_{0},...,g_{q-1}) \gets \Call{LookupOperators}{B, T}$
-  \State $P \gets \Call{BuildTreeBodyAt}{\{f_{0},...,f_{l-1}\}, \{a_{0},...,a_{l-1}\}, B}$
-  \State $B^{\prime} \gets \Call{BuildASTSendMsg}{B, \{f_{0},...,f_{l-1}\}, \{a_{0},...,a_{l-1}\}, P, r}$
+  \State $(a_{0},...,a_{l-1}) \gets \Call{LookupArrays}{B}$
+  \State $(f_{0},...,f_{l-1}) \gets \Call{LookupOperators}{B, (a_{0},...,a_{l-1})}$
+  \State $P \gets \Call{BuildTreeBodyAt}{(f_{0},...,f_{l-1}), (a_{0},...,a_{l-1}), B}$
+  \State $B^{\prime} \gets \Call{BuildASTSendMsg}{B, (f_{0},...,f_{l-1}), (a_{0},...,a_{l-1}), P, r}$
 \EndFunction
 \end{algorithmic}
